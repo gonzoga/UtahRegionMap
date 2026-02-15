@@ -3898,6 +3898,7 @@ jQuery(document).ready(function ($) {
     // Handle map clicks
     $(".single-county").click(function (e) {
         e.preventDefault();
+        e.stopPropagation();
 
         // Determine which county was clicked
         let clickedClass = '';
@@ -3915,6 +3916,15 @@ jQuery(document).ready(function ($) {
 
             renderCounty(clickedClass);
         }
+    });
+
+    // Click on background to deselect county
+    $(document).click(function (e) {
+        // Don't deselect if clicking on the service cards or county links
+        if ($(e.target).closest('.single-county, .list-container').length) return;
+
+        $(".single-county").removeClass("dimmed selected");
+        $('.list-container').html('<p>Select a county on the map to view services.</p>');
     });
 
     function renderCounty(countyClass) {
