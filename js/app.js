@@ -3947,7 +3947,7 @@ jQuery(document).ready(function ($) {
         // Build HTML
         let html = `<div class="x-text x-content county ${countyClass}-info" style="display:block;">`;
         html += `<h3>${countyName}</h3>`;
-        html += `<div class="x-row-inner" style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 0;">`;
+        html += `<div class="x-row-inner services-grid">`;
 
         if (countyServices.length === 0) {
             html += '<p>No services found for this county.</p>';
