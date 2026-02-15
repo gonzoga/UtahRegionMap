@@ -2173,6 +2173,7 @@
     #svg-utah-counties .single-county path {
       stroke: #000;
       stroke-width: 100;
+      transition: fill 0.4s ease, opacity 0.4s ease, stroke-width 0.3s ease;
     }
 
     #svg-utah-counties .single-county path:hover {
@@ -2189,7 +2190,10 @@
     #svg-utah-counties .single-county.dimmed path {
       fill: #c0c0c0 !important;
       opacity: 0.5;
-      transition: fill 0.3s ease, opacity 0.3s ease;
+    }
+
+    #svg-utah-counties .single-county text {
+      transition: opacity 0.4s ease;
     }
 
     #svg-utah-counties .single-county.dimmed text {
@@ -2200,7 +2204,6 @@
       opacity: 1;
       stroke-width: 200;
       stroke: #1a3c5e;
-      transition: stroke-width 0.3s ease;
     }
 
     #svg-utah-counties text {
@@ -2799,13 +2802,13 @@
 
 
             </div>
+          </div>
       </div>
+
+
     </div>
 
-
-  </div>
-
-  </article>
+    </article>
 
 
   </div>
