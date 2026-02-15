@@ -13,15 +13,18 @@
     /* ============================
        CSS Variables (Color Palette)
        ============================ */
+    /* ============================
+       CSS Variables (Color Palette)
+       ============================ */
     :root {
-      --primary-color: #490f52;
-      --primary-color-dark: #4e2d53;
-      --primary-color-light: #cbbacd;
-      --secondary-color: #1c8478;
-      --secondary-color-dark: #26524d;
-      --secondary-color-light: #cee4e2;
-      --tertiary-color: #0e80a7;
-      --tertiary-color-dark: #205162;
+      --primary-color: #00447b;
+      --primary-color-dark: #00335e;
+      --primary-color-light: #e6f0fa;
+      --secondary-color: #065d89;
+      --secondary-color-dark: #04405e;
+      --secondary-color-light: #e0f2f1;
+      --tertiary-color: #538cc6;
+      --tertiary-color-dark: #3a6ea5;
       --spacing-xs: 0.5rem;
       --spacing-2xs: 0.25rem;
     }
@@ -39,8 +42,8 @@
       margin: 0;
       padding: 0;
       font-family: "Outfit", sans-serif;
-      color: #4a5568;
-      background: #fff;
+      color: #333333;
+      background: #f1f1f1;
     }
 
     a[href] {
@@ -57,15 +60,23 @@
       margin: 0 auto;
       padding: 20px;
       gap: 20px;
+      background: #fff;
     }
 
     .map-header {
       width: 100%;
+      flex: 0 0 100%;
       padding: 0 10px;
     }
 
     .map-header p {
       margin: 0.25em 0;
+    }
+
+    .instruction-text {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      font-weight: 700;
     }
 
     .map-column {
@@ -81,6 +92,7 @@
     .services-column h2 {
       font-size: 1.3rem;
       margin-top: 0;
+      color: var(--primary-color);
     }
 
     /* ============================
@@ -92,7 +104,7 @@
     }
 
     #svg-utah-counties .single-county path {
-      stroke: #000;
+      stroke: #fff;
       stroke-width: 100;
       transition: fill 0.4s ease, opacity 0.4s ease, stroke-width 0.3s ease;
     }
@@ -125,13 +137,14 @@
     #svg-utah-counties .single-county.selected path {
       opacity: 1;
       stroke-width: 200;
-      stroke: #1a3c5e;
+      stroke: var(--primary-color-dark);
     }
 
     #svg-utah-counties text {
       fill: #fff;
       font-size: 60rem;
       font-weight: 600;
+      pointer-events: none;
     }
 
     .county {
@@ -148,7 +161,7 @@
     }
 
     .primary:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .primary-dark {
@@ -158,7 +171,7 @@
     }
 
     .primary-dark:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .secondary {
@@ -168,7 +181,7 @@
     }
 
     .secondary:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .secondary-dark {
@@ -178,7 +191,7 @@
     }
 
     .secondary-dark:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .tertiary {
@@ -188,7 +201,7 @@
     }
 
     .tertiary:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .tertiary-dark {
@@ -197,7 +210,7 @@
     }
 
     .tertiary-dark:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .gray {
@@ -208,7 +221,7 @@
 
     .gray:hover {
       fill: #858383;
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .gray-dark {
@@ -218,7 +231,7 @@
     }
 
     .gray-dark:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     /* ============================
@@ -262,6 +275,12 @@
         flex-direction: column;
       }
 
+      .map-column,
+      .services-column {
+        flex: 0 0 auto;
+        width: 100%;
+      }
+
       .services-grid {
         grid-template-columns: 1fr;
       }
@@ -269,7 +288,7 @@
 
     .service-container {
       padding: 16px 12px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.33);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
       border: 1px solid #e1e4e8;
       border-radius: 8px;
       background: #fff;
@@ -281,6 +300,12 @@
       flex-direction: column;
       margin: 0;
       box-sizing: border-box;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-container:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
     .service-container p {
@@ -288,26 +313,31 @@
       margin: 0;
       font-size: 16px;
       line-height: 24px;
-      color: #4a5568;
+      color: #333;
     }
 
     .service-container .lead-in-text {
-      color: #002e5d;
+      color: var(--primary-color);
       font-size: 17.6px;
       font-weight: 700;
       line-height: 26.4px;
-      border-bottom: 2px solid #cc0000;
+      border-bottom: 2px solid var(--secondary-color);
       padding-bottom: 2px;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
 
     .service-container a {
-      color: #4a5568;
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .service-container a:hover {
       text-decoration: underline;
     }
 
     h3.county-title {
-      color: #002e5d;
+      color: var(--primary-color);
       font-weight: 700;
       margin-bottom: 0.5em;
     }
