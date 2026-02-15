@@ -3923,6 +3923,9 @@ jQuery(document).ready(function ($) {
         // Don't deselect if clicking on the service cards or county links
         if ($(e.target).closest('.single-county, .list-container').length) return;
 
+        // Don't animate if nothing is selected
+        if ($(".single-county.selected").length === 0) return;
+
         // Animate cards out
         var cards = $('.list-container .service-card-animate');
         if (cards.length) {
