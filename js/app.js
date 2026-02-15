@@ -3923,8 +3923,18 @@ jQuery(document).ready(function ($) {
         // Don't deselect if clicking on the service cards or county links
         if ($(e.target).closest('.single-county, .list-container').length) return;
 
-        $(".single-county").removeClass("dimmed selected");
-        $('.list-container').html('<p>Select a county on the map to view services.</p>');
+        // Animate cards out
+        var cards = $('.list-container .service-card-animate');
+        if (cards.length) {
+            cards.removeClass('service-card-animate').addClass('service-card-exit');
+            setTimeout(function () {
+                $(".single-county").removeClass("dimmed selected");
+                $('.list-container').html('<p class="service-card-animate" style="--i:0;">Select a county on the map to view services.</p>');
+            }, 300);
+        } else {
+            $(".single-county").removeClass("dimmed selected");
+            $('.list-container').html('<p class="service-card-animate" style="--i:0;">Select a county on the map to view services.</p>');
+        }
     });
 
     function renderCounty(countyClass) {
@@ -3942,9 +3952,9 @@ jQuery(document).ready(function ($) {
         if (countyServices.length === 0) {
             html += '<p>No services found for this county.</p>';
         } else {
-            countyServices.forEach(service => {
+            countyServices.forEach((service, index) => {
                 html += `
-                <div class="x-col" style="margin-bottom: 0;">
+                <div class="x-col service-card-animate" style="margin-bottom: 0; --i: ${index};">
                     <div class="service-container">
                         <p class="lead-in-text mb-zero"><strong>${service.service_name}</strong></p>
                         ${service.phone ? `<p class="mb-zero"><a href="tel:${service.phone}">${service.phone}</a></p>` : ''}
