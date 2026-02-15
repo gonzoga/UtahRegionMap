@@ -3909,6 +3909,10 @@ jQuery(document).ready(function ($) {
         }
 
         if (clickedClass) {
+            // Dim all counties, highlight the selected one
+            $(".single-county").addClass("dimmed").removeClass("selected");
+            $(this).removeClass("dimmed").addClass("selected");
+
             renderCounty(clickedClass);
         }
     });

@@ -2187,6 +2187,24 @@
       stroke-width: 0;
     }
 
+    /* Dim non-selected counties when one is clicked */
+    #svg-utah-counties .single-county.dimmed path {
+      fill: #c0c0c0 !important;
+      opacity: 0.5;
+      transition: fill 0.3s ease, opacity 0.3s ease;
+    }
+
+    #svg-utah-counties .single-county.dimmed text {
+      opacity: 0.4;
+    }
+
+    #svg-utah-counties .single-county.selected path {
+      opacity: 1;
+      stroke-width: 200;
+      stroke: #1a3c5e;
+      transition: stroke-width 0.3s ease;
+    }
+
     #svg-utah-counties text {
       fill: #fff;
       font-size: 60rem;
