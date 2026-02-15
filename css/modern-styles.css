@@ -1,0 +1,97 @@
+/* Modern CSS Reset & Variables */
+:root {
+  --font-primary: 'Outfit', sans-serif;
+  --color-primary: #2d3748; /* Dark Slate */
+  --color-secondary: #4a5568; /* Slate */
+  --color-accent: #3182ce; /* Blue */
+  --color-bg: #f7fafc; /* Light Gray */
+  --color-white: #ffffff;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --radius-md: 0.5rem;
+  --container-width: 1200px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-accent);
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #2c5282; /* Darker Blue */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Layout Utilities */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--color-white);
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero h1 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  color: var(--color-secondary);
+  font-size: 1.125rem;
+}
+
+/* Map Containers */
+#cs-content {
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
