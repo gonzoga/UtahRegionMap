@@ -15,6 +15,12 @@ The map currently looks generic. To feel "native" to the USBE site, we must adop
   - Import `Montserrat` and `Open Sans` Google Fonts.
   - Apply `Montserrat` showing font-weight 700 to the county labels.
 
+### 1.1 ADA Color Compliance (Verified)
+
+- **Primary Blue (`#00447B`) vs White**: 13.5:1 ratio (Passes WCAG AAA).
+- **Secondary Blue (`#065D89`) vs White**: 9.0:1 ratio (Passes WCAG AAA).
+- **Inactive Gray (`#475569`) vs White**: 7.0:1 ratio (Passes WCAG AA). *Changed from non-compliant `#94a3b8`.*
+
 ## 2. Functional Integration (The "Directory" Tab)
 
 The current "Directory" tab only lists 5 PDF downloads. This is a high-friction user experience. The map should be the **primary** interface here.
@@ -60,3 +66,46 @@ The current page lacks search for these directories.
 2. **Data Entry**: Manually transfer data from the 5 PDFs into a JSON object in `app.js`.
 3. **Logic Update**: Modify `app.js` to render the specific "Director/POC" card layout instead of generic services.
 4. **Mobile Polish**: Add the list-view fallback for small screens.
+
+## Technical Deployment (Omni CMS)
+
+Based on our analysis, the site runs on **Omni CMS** (formerly OmniUpdate). This changes our deployment strategy:
+
+- **No Plugins**: We cannot use WordPress plugins.
+- **Embed Strategy**: The map must be packaged as a standalone "Widget" or "Gadget".
+  - **HTML**: A single container `div` (e.g., `<div id="yic-interactive-map"></div>`).
+  - **Assets**: CSS and JS files hosted on the USBE server or a CDN.
+  - **Installation**: The site admin will paste our "Embed Code" (Script + CSS + Div) into an "Editable Region" or create a new "Asset" in Omni CMS.
+- **Recommendation**: We will deliver a `dist/` folder containing a consolidated `map-widget.js` and `map-styles.css` for easy "Drop-in" implementation.
+
+## Phase 2: Broader Site UX Strategy (Beyond the Map)
+
+To transform the YIC site from a file repository into a service portal, we propose the following "Useful Conversions":
+
+### 1. Allocations (The "PDF Trap" -> Interactive Dashboard)
+
+- **Current Friction**: Static PDFs require manual searching and calculation.
+
+- **Proposed Solution**: Create a simple interactive table/chart.
+- **User Value**: Administrators can select their district to see current allocations, balances, and 3-year trends instantly.
+
+### 2. Forms (Print/Scan -> Centralized Portal)
+
+- **Current Friction**: Fragmented PDF downloads requiring print/sign/scan cycles.
+
+- **Proposed Solution**: Centralize all workflows into a dedicated "Forms" tab using web forms (e.g., Qualtrics).
+- **User Value**: Reduces submission errors and eliminates "printer fatigue."
+
+### 3. Policy (Legalese -> Plain Language)
+
+- **Current Friction**: Direct links to dense State Code and Board Rules.
+
+- **Proposed Solution**: Create "Quick Guides" or "Plain English" summaries for major rules (e.g., R277-709).
+- **User Value**: Democratizes access to compliance information for non-legal staff and parents.
+
+### 4. Monitoring (Invisible -> Transparency Hub)
+
+- **Current Friction**: Monitoring results are hidden in obscure reports.
+
+- **Proposed Solution**: Add a public "Monitoring & Outcomes" section with a "Program Status" traffic light for LEAs.
+- **User Value**: Drives accountability and helps programs self-correct.
